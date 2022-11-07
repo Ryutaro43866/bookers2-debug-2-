@@ -21,6 +21,9 @@
             <%= render 'favorites/favorite-btn', book: @book %>
           </td>
           <td class="comments-counter"><%= render 'book_comments/counter', book: @book %></td>
+          <td>
+            <div id="book_raty<%= @book.id %>"></div>
+          </td>
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
@@ -36,3 +39,12 @@
     </div>
   </div>
 </div>
+
+<script>
+  raty(document.querySelector('#book_raty<%= @book.id %>'), {
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      readOnly: true,
+      score: <%= @book.rate %>,
+    });
+</script>

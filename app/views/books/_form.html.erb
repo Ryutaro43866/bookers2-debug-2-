@@ -7,8 +7,9 @@
     <%= f.label :opinion %>
     <%= f.text_area :body, class: 'form-control book_body' %>
   </div>
-  <div class="form-group", id="post_raty">
+  <div class="form-group", id="book_raty">
     <%= f.label :rate %>
+    <%= f.hidden_field :rate, id: :review_star %>
   </div>
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
@@ -16,10 +17,11 @@
 <% end %>
 
 <script>
-  let elem = document.querySelector('#post_raty');
+  let elem = document.querySelector('#book_raty');
   let opt = {
     starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>'
+    starOn : '<%= asset_path('star-on.png') %>',
+    scoreName: 'book[rate]',
    };
   raty(elem,opt);
 </script>
