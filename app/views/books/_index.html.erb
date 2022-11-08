@@ -21,15 +21,7 @@
         </td>
         <td><%= render 'book_comments/counter', book: book %></td>
         <td>
-          <div id="book_raty<%= book.id %>"></div>
-          <script>
-            raty(document.querySelector('#book_raty<%= book.id %>'), {
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn : '<%= asset_path('star-on.png') %>',
-              readOnly: true,
-              score: <%= book.rate %>,
-            });
-          </script>
+          <%= render 'books/rate', book: book %>
         </td>
       </tr>
     <% end %>
